@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#4682A9',
               textDecoration: 'none',
             }}
           >
@@ -96,7 +96,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#4682A9',
               textDecoration: 'none',
             }}
           >
