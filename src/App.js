@@ -5,7 +5,8 @@ import Navigation from './Components/Navigation';
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <Navigation />y
+      <h2>Моника</h2>
     </div>
   );
 }
