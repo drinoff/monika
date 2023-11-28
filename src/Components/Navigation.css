@@ -1,0 +1,25 @@
+.navigation {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 1rem;
+    color: white;
+    background-color: #182339;
+}
+.navMenuItemsContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 60%;
+    margin-left:14%;
+}
+.navElement {
+    margin: 1rem 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.navElement:hover {
+    color: #ff6b6b;
+}
