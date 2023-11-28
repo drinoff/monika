@@ -3,9 +3,9 @@ import './Navigation.css';
 const Navigation = () => {
   return (
     <div className="navigation">
-      <p>Термопомпи</p>
-      <p>Климатици</p>
-      <p>Контакт</p>
+      <p className='navElement'>Термопомпи</p>
+      <p className='navElement'>Климатици</p>
+      <p className='navElement'>Контакт</p>
     </div>
   );
 };

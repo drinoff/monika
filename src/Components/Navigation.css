@@ -1,8 +1,14 @@
 .navigation {
-    width: 100%;
+    width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 0 1rem;
     color: white;
+}
+.navElement {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
 }
