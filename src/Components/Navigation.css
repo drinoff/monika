@@ -9,7 +9,18 @@
     display: flex;
 }
 .MuiButtonBase-root:hover,
-.MuiButton-root:hover {
+.MuiButton-root:hover{
     background-color: transparent !important;
-    color: coral;
+    color: coral !important;
+}
+.MuiMenuItem-root {
+    color: #4462C4 !important;
+    font-weight: bold !important;
+}
+/* mobile */
+.mobileVersionLogo{
+    margin-left:30%;
+}
+.MuiSvgIcon-root {
+    color: #4462C4;
 }
