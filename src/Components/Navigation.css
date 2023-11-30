@@ -9,7 +9,7 @@
     display: flex;
 }
 .MuiButtonBase-root:hover,
-.MuiButton-root {
-    background-color: none !important;
+.MuiButton-root:hover {
+    background-color: transparent !important;
     color: coral;
 }
