@@ -1,0 +1,16 @@
+.MuiAppBar-root {
+  -webkit-box-shadow: 0px 2px 4px -1px rgba(66, 117, 194, 1) ;
+  -moz-box-shadow: 0px 2px 4px -1px rgba(66, 117, 194, 1) ;
+  box-shadow: 0px 2px 4px -1px rgba(66, 117, 194, 1) ;
+  padding: 20px 0px 20px 0px;
+}
+.navLinks {
+    margin-left: 30%;
+    display: flex;
+}
+.MuiButtonBase-root:hover,
+.MuiButton-root {
+    font-size: 18px;
+    background-color: 'none !important';
+    color: coral;
+}
