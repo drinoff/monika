@@ -114,7 +114,7 @@ function ResponsiveAppBar() {
                   disableRipple
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: currentPage === page ? 'coral':'#4462C4', display: 'block', fontWeight: 'bold' }}
+                  sx={{ my: 2, color: currentPage === page ? 'coral':'#4462C4', display: 'block', fontWeight: 'bold', fontSize: '18px' }}
                 >
                   {page}
                 </Button>
