@@ -1,30 +1,34 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import first from '../Assets/carousel/1.jpg';
 import second from '../Assets/carousel/2.jpg';
 import third from '../Assets/carousel/3.jpg';
-import {db }from '../../config';
-import { onValue, ref } from 'firebase/database';
+import { db } from '../../config';
+import { onValue, ref, set } from 'firebase/database';
 import './Home.css';
 
 const Home = () => {
   const [appliances, setAppliances] = useState([]);
-  console.log(db);
   useEffect(() => {
-    const query = ref(db);
+    const query = ref(db, '/appliances');
+
     return onValue(query, (snapshot) => {
       const data = snapshot.val();
-
-      if (snapshot.exists()) {
-        Object.values(data).map((project) => {
-          return setAppliances((prevState) => [...prevState, project]);
-        });
-      }
+      setAppliances(data);
     });
   }, []);
-  console.log(appliances);
+
+  const Push = () => {
+    appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
+
+    set(ref(db, 'appliances'), {
+      ...appliances,
+    });
+  };
+
   return (
     <div className="homeContainer">
+      <button onClick={Push}>Add</button>
       <h3>Ние сме FA MultiPolis</h3>
       <Box sx={{ borderColor: '#4462C4' }}>
         <div className="firstTab">
