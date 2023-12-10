@@ -17,7 +17,7 @@ const Home = () => {
 
       if (snapshot.exists()) {
         Object.values(data).map((project) => {
-          setAppliances((prevState) => [...prevState, project]);
+          return setAppliances((prevState) => [...prevState, project]);
         });
       }
     });
