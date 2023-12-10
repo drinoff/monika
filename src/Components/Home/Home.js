@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import first from '../Assets/carousel/1.jpg';
 import second from '../Assets/carousel/2.jpg';
 import third from '../Assets/carousel/3.jpg';
+import {db }from '../../config';
+import { onValue, ref } from 'firebase/database';
 import './Home.css';
 
 const Home = () => {
+  const [appliances, setAppliances] = useState([]);
+  console.log(db);
+  useEffect(() => {
+    const query = ref(db);
+    return onValue(query, (snapshot) => {
+      const data = snapshot.val();
+
+      if (snapshot.exists()) {
+        Object.values(data).map((project) => {
+          setAppliances((prevState) => [...prevState, project]);
+        });
+      }
+    });
+  }, []);
+  console.log(appliances);
   return (
     <div className="homeContainer">
       <h3>Ние сме FA MultiPolis</h3>
