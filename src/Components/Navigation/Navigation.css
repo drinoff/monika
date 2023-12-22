@@ -25,3 +25,12 @@
 .MuiSvgIcon-root {
     color: #4462C4;
 }
+.appliancesNavMenuContainer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.appliancesNavMenuContainer:hover > .MuiSvgIcon-root{
+    cursor: pointer;
+    color: coral !important;
+}

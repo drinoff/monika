@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -11,16 +11,18 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '../Assets/logo.svg';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import './Navigation.css';
 
 const pages = ['За Нас', 'Уреди', 'Услуги', 'Контакти'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
+  const [subElNav, setSubElNav] = useState(null);
+  const [subElNavDesktop, setSubElNavDesktop] = useState(null);
   const [currentPage, setCurrentPage] = useState('За Нас');
   const navigate = useNavigate();
   const location = useLocation();
-
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -45,19 +47,30 @@ function ResponsiveAppBar() {
   }, [location.pathname]);
 
   const handleCloseNavMenu = (page) => {
+    console.log(page);
     setAnchorElNav(null);
+    setSubElNav(null);
+    setSubElNavDesktop(null);
     switch (page) {
       case 'За Нас':
         navigate('/');
         break;
-      case 'Уреди':
-        navigate('/appliances');
-        break;
+      // case 'Уреди':
+      //   navigate('/appliances');
+      //   break;
       case 'Услуги':
         navigate('/services');
         break;
       case 'Контакти':
         navigate('/contact');
+        break;
+      case 'Термопомпи':
+        setCurrentPage('Уреди');
+        navigate('/appliances/heatPumps');
+        break;
+      case 'Климатици':
+        setCurrentPage('Уреди');
+        navigate('/appliances/aCs');
         break;
       default:
         navigate('/');
@@ -99,8 +112,58 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem
+                  key={page}
+                  onClick={(event) => (page === 'Уреди' ? setSubElNav(event.currentTarget) : handleCloseNavMenu(page))}
+                >
+                  <Typography textAlign="center">
+                    {subElNav ? (
+                      <Menu
+                        id="menu-appbar"
+                        anchorEl={subElNav}
+                        anchorOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                          vertical: 'top',
+                          horizontal: 'left',
+                        }}
+                        open={Boolean(subElNav)}
+                        //onClose={() => {setSubElNav(null); handleCloseNavMenu(page)}}
+                        sx={{
+                          display: { xs: 'block', md: 'none' },
+                        }}
+                      >
+                        {' '}
+                        {subElNav ? (
+                          <div>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCloseNavMenu('Термопомпи');
+                              }}
+                            >
+                              Термопомпи
+                            </MenuItem>
+                            <MenuItem
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleCloseNavMenu('Климатици');
+                              }}
+                            >
+                              Климатици
+                            </MenuItem>
+                          </div>
+                        ) : (
+                          page
+                        )}
+                      </Menu>
+                    ) : (
+                      page
+                    )}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -114,15 +177,73 @@ function ResponsiveAppBar() {
                   disableRipple
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: currentPage === page ? 'coral':'#4462C4', display: 'block', fontWeight: 'bold', fontSize: '18px' }}
+                  onMouseEnter={(event) => (page === 'Уреди' ? setSubElNavDesktop(event.currentTarget) : null)}
+                  sx={{
+                    my: 2,
+                    color: currentPage === page ? 'coral' : '#4462C4',
+                    display: 'block',
+                    fontWeight: 'bold',
+                    fontSize: '18px',
+                  }}
                 >
-                  {page}
+                  {page === 'Уреди' ? (
+                    <div className="appliancesNavMenuContainer">
+                      {page}
+                      <KeyboardArrowDownIcon />
+                    </div>
+                  ) : (
+                    page
+                  )}
                 </Button>
               ))}
             </div>
           </Box>
         </Toolbar>
       </Container>
+      {subElNavDesktop ? (
+        <Menu
+          id="menu-appbar"
+          anchorEl={subElNavDesktop}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          open={Boolean(subElNavDesktop)}
+          onClose={() => setSubElNavDesktop(null)}
+          sx={{
+            display: { xs: 'none', md: 'block' },
+          }}
+        >
+          {' '}
+          {subElNavDesktop ? (
+            <div>
+              <MenuItem
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCloseNavMenu('Термопомпи');
+                }}
+              >
+                Термопомпи
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCloseNavMenu('Климатици');
+                }}
+              >
+                Климатици
+              </MenuItem>
+            </div>
+          ) : (
+            'Уреди'
+          )}
+        </Menu>
+      ) : null}
     </AppBar>
   );
 }

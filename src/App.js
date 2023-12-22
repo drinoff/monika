@@ -2,9 +2,10 @@ import {Routes, Route} from 'react-router-dom';
 import './App.css';
 import Navigation from './Components/Navigation/Navigation';
 import Home from './Components/Home/Home';
-import Appliances from './Components/Appliances/Appliances';
 import Services from './Components/Services/Services';
 import Contacts from './Components/Contacts/Contacts';
+import HeatPumps from './Components/Appliances/HeatPumps';
+import ACS from './Components/Appliances/ACS';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <div className="mainContent">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/appliances" element={<Appliances />} />
+          <Route path="/appliances/heatPumps" element={<HeatPumps />} />
+          <Route path="/appliances/aCs" element={<ACS />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contacts />} />
         </Routes>
