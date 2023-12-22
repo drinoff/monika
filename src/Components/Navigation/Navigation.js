@@ -55,9 +55,6 @@ function ResponsiveAppBar() {
       case 'За Нас':
         navigate('/');
         break;
-      // case 'Уреди':
-      //   navigate('/appliances');
-      //   break;
       case 'Услуги':
         navigate('/services');
         break;
