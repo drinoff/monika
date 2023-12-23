@@ -8,7 +8,8 @@ import Contacts from './Components/Contacts/Contacts';
 import HeatPumps from './Components/Appliances/HeatPumps';
 import ACS from './Components/Appliances/ACS';
 import { db } from './config';
-import { onValue, ref, set } from 'firebase/database';
+import { onValue, ref } from 'firebase/database';
+//import {set} from 'firebase/database';
 
 function App() {
   const [appliances, setAppliances] = useState([]);
@@ -21,17 +22,17 @@ function App() {
     });
   }, []);
 
-  const Push = () => {
-    appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
+  // const Push = () => {
+  //   appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
 
-    set(ref(db, 'appliances'), {
-      ...appliances,
-    });
-  };
+  //   set(ref(db, 'appliances'), {
+  //     ...appliances,
+  //   });
+  // };
 
   return (
     <div className="App">
-      <button onClick={Push}>Add</button>
+      {/* <button onClick={Push}>Add</button> */}
       <Navigation />
       <div className="mainContent">
         <Routes>
