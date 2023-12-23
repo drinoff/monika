@@ -38,7 +38,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/appliances/heatPumps"
-            element={<HeatPumps items={appliances.filter((item) => item.type === 'heatPump')} />}
+            element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'heatPump')} />}
           />
           <Route path="/appliances/aCs" element={<ACS />} />
           <Route path="/services" element={<Services />} />

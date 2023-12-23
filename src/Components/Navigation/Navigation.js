@@ -47,7 +47,6 @@ function ResponsiveAppBar() {
   }, [location.pathname]);
 
   const handleCloseNavMenu = (page) => {
-    console.log(page);
     setAnchorElNav(null);
     setSubElNav(null);
     setSubElNavDesktop(null);
