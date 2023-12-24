@@ -6,7 +6,7 @@ import Home from './Components/Home/Home';
 import Services from './Components/Services/Services';
 import Contacts from './Components/Contacts/Contacts';
 import HeatPumps from './Components/Appliances/HeatPumps';
-import ACS from './Components/Appliances/ACS';
+import Login from './Components/Login/Login';
 import { db } from './config';
 import { onValue, ref } from 'firebase/database';
 //import {set} from 'firebase/database';
@@ -41,9 +41,10 @@ function App() {
             path="/appliances/heatPumps"
             element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'heatPump')} />}
           />
-          <Route path="/appliances/aCs" element={<ACS />} />
+          <Route path="/appliances/aCs" element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'aCs')} />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contacts />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>

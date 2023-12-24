@@ -16,7 +16,7 @@ import './Navigation.css';
 
 const pages = ['За Нас', 'Уреди', 'Услуги', 'Контакти'];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({handleOpenModal}) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [subElNav, setSubElNav] = useState(null);
   const [subElNavDesktop, setSubElNavDesktop] = useState(null);

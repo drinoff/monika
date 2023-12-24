@@ -53,7 +53,7 @@ const HeatPumpItem = ({ item }) => {
       case 'eer35':
         return 'EER при +35°C (вода за охлаждане 7°C)';
       case 'power':
-        return 'Мощност (kW)';
+        return 'Мощност';
       case 'powerSupplyType':
         return 'Тип захранване';
       case 'MaxElConsumption':
@@ -62,6 +62,49 @@ const HeatPumpItem = ({ item }) => {
         return 'Диаметър връзки (цол)';
       case 'audioPressure':
         return 'Звуково налягане (dB(A))';
+      case 'weight':
+        return 'Тегло';
+      case 'coolingAgent':
+        return 'Хладилен агент';
+      case 'productClass':
+        return 'Продуктов Клас';
+      case 'coverage':
+        return 'За помещения';
+      case 'outputPowerCooling':
+        return 'Отдавана мощност (охлаждане)';
+      case 'outputPowerHeating':
+        return 'Отдавана мощност (отопление)';
+      case 'inputPowerCooling':
+        return 'Консумирана мощност (охлаждане)';
+      case 'inputPowerHeating':
+        return 'Консумирана мощност (отопление)';
+      case "extras":
+        return "Предимства";
+      case "energyClassCooling":
+        return "Енергиен клас (охлаждане)";
+      case "energyClassHeating":
+        return "Енергиен клас (отопление)";
+      case "SEER":
+        return "SEER (Сезонна ефективност в режим на охлаждане)";
+      case "SCOP":
+        return "SCOP (Сезонна ефективност в режим на отопление)";
+      case "recVolumeCooling":
+        return "Препоръчителен обем (охлаждане)";
+      case "recVolumeHeating":
+        return "Препоръчителен обем (отопление)";
+      case 'noise':
+        return 'Ниво на шум (вътрешно/външно)';
+      case 'workingTempCooling':
+        return 'Работен диапазон (охлаждане)';
+      case 'workingTempHeating':
+        return 'Работен диапазон (отопление)';
+      case 'diameterPipe':
+        return 'Диаметър на тръбата течност/газ (mm)';
+      case 'powerSupplyTypeAcs':
+        return 'El. захранване';
+      case 'manufactured':
+        return 'Произход';
+
       default:
         return name;
     }
@@ -98,7 +141,7 @@ const HeatPumpItem = ({ item }) => {
                       </StyledTableRow>
                     )
                 )}
-                {item.dimensions.length.length > 0 && (
+                {item.dimensions.length && item.dimensions.length.length > 0 && (
                   <StyledTableRow>
                     <TableCell component="th" scope="row">
                       Дължина
@@ -106,12 +149,44 @@ const HeatPumpItem = ({ item }) => {
                     <TableCell align="right">{item.dimensions.length}</TableCell>
                   </StyledTableRow>
                 )}
-                {item.dimensions.depth.length > 0 && (
+                {item.dimensions.depth && item.dimensions.depth.length > 0 && (
                   <StyledTableRow>
                     <TableCell component="th" scope="row">
                       Дълбочина(mm)
                     </TableCell>
                     <TableCell align="right">{item.dimensions.depth}</TableCell>
+                  </StyledTableRow>
+                )}
+                {item.dimensions.inside && item.dimensions.inside.length > 0 && (
+                  <StyledTableRow>
+                    <TableCell component="th" scope="row">
+                      Размери Вътрешно Тяло(mm)
+                    </TableCell>
+                    <TableCell align="right">{item.dimensions.inside}</TableCell>
+                  </StyledTableRow>
+                )}
+                {item.dimensions.outside && item.dimensions.outside.length > 0 && (
+                  <StyledTableRow>
+                    <TableCell component="th" scope="row">
+                      Размери Външно Тяло(mm)
+                    </TableCell>
+                    <TableCell align="right">{item.dimensions.outside}</TableCell>
+                  </StyledTableRow>
+                )}
+                {item.dimensions.weightInside && item.dimensions.weightInside.length > 0 && (
+                  <StyledTableRow>
+                    <TableCell component="th" scope="row">
+                      Тегло Вътрешно Тяло
+                    </TableCell>
+                    <TableCell align="right">{item.dimensions.weightInside}</TableCell>
+                  </StyledTableRow>
+                )}
+                {item.dimensions.weightOutside && item.dimensions.weightOutside.length > 0 && (
+                  <StyledTableRow>
+                    <TableCell component="th" scope="row">
+                      Тегло Външно Тяло
+                    </TableCell>
+                    <TableCell align="right">{item.dimensions.weightOutside}</TableCell>
                   </StyledTableRow>
                 )}
               </TableBody>
