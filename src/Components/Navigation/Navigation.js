@@ -16,7 +16,7 @@ import './Navigation.css';
 
 const pages = ['За Нас', 'Уреди', 'Услуги', 'Контакти'];
 
-function ResponsiveAppBar({handleOpenModal}) {
+function ResponsiveAppBar({ logout }) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [subElNav, setSubElNav] = useState(null);
   const [subElNavDesktop, setSubElNavDesktop] = useState(null);
@@ -71,6 +71,11 @@ function ResponsiveAppBar({handleOpenModal}) {
       default:
         navigate('/');
     }
+  };
+
+  const handleOnClick = () => {
+    navigate('/add');
+    setCurrentPage(null);
   };
 
   return (
@@ -192,6 +197,12 @@ function ResponsiveAppBar({handleOpenModal}) {
                   )}
                 </Button>
               ))}
+              {JSON.parse(localStorage.getItem('user')) && (
+                <>
+                  <button className="addButton" onClick={handleOnClick}>Добави</button> 
+                  <button className="logoutButton" onClick={logout}>Изход</button>
+                </>
+              )}
             </div>
           </Box>
         </Toolbar>

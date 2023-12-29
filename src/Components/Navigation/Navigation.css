@@ -5,32 +5,72 @@
   padding: 20px 0px 20px 0px;
 }
 .navLinks {
-    margin-left: 30%;
-    display: flex;
-    font-size: 18px;
+  margin-left: 30%;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+.MuiButtonBase-root:first-child {
+  width: 100px;
 }
 .MuiButtonBase-root:hover,
-.MuiButton-root:hover{
-    background-color: transparent !important;
-    color: coral !important;
+.MuiButton-root:hover {
+  background-color: transparent !important;
+  color: coral !important;
 }
 .MuiMenuItem-root {
-    color: #4462C4 !important;
-    font-weight: bold !important;
+  color: #4462c4 !important;
+  font-weight: bold !important;
 }
 /* mobile */
-.mobileVersionLogo{
-    margin-left:30%;
+.mobileVersionLogo {
+  margin-left: 30%;
 }
 .MuiSvgIcon-root {
-    color: #4462C4;
+  color: #4462c4;
 }
-.appliancesNavMenuContainer{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.appliancesNavMenuContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.appliancesNavMenuContainer:hover > .MuiSvgIcon-root{
+.appliancesNavMenuContainer:hover > .MuiSvgIcon-root {
+  cursor: pointer;
+  color: coral !important;
+}
+.addButton {
+    width: 150px;
+    height: 34px;
+    color: coral;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid #4462c4;
+    border-radius: 12px;
+    background: none;
+    margin-left: 300px;
+    padding: 5px 10px 5px 10px;
+    text-transform: uppercase;
     cursor: pointer;
-    color: coral !important;
+}
+.addButton:hover {
+    background-color: #4462c4;
+    color: white;
+}
+.logoutButton{
+    width: 150px;
+    height: 34px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: 2px solid coral;
+    border-radius: 12px;
+    background: coral;
+    margin-left: 10px;
+    padding: 5px 10px 5px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.logoutButton:hover {
+    background-color: white;
+    color: coral;
 }

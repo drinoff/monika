@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { db } from './config';
+import { onValue, ref, set } from 'firebase/database';
+import { getAuth, signOut } from 'firebase/auth';
 import Navigation from './Components/Navigation/Navigation';
 import Home from './Components/Home/Home';
 import Services from './Components/Services/Services';
 import Contacts from './Components/Contacts/Contacts';
 import HeatPumps from './Components/Appliances/HeatPumps';
 import Login from './Components/Login/Login';
-import { db } from './config';
-import { onValue, ref } from 'firebase/database';
-//import {set} from 'firebase/database';
+import Add from './Components/Add/Add';
+
+import './App.css';
 
 function App() {
   const [appliances, setAppliances] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const query = ref(db, '/appliances');
 
@@ -22,18 +26,34 @@ function App() {
     });
   }, []);
 
-  // const Push = () => {
-  //   appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
+  const Push = () => {
+    appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
 
-  //   set(ref(db, 'appliances'), {
-  //     ...appliances,
-  //   });
-  // };
+    set(ref(db, 'appliances'), {
+      ...appliances,
+    });
+  };
+
+  const handleAdminClick = () => {
+    navigate('/login');
+  };
+  
+  const logout = () => {
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        localStorage.clear();
+        navigate('/')
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  };
 
   return (
     <div className="App">
-      {/* <button onClick={Push}>Add</button> */}
-      <Navigation />
+      
+      <Navigation logout={logout} />
       <div className="mainContent">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -41,11 +61,19 @@ function App() {
             path="/appliances/heatPumps"
             element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'heatPump')} />}
           />
-          <Route path="/appliances/aCs" element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'aCs')} />} />
+          <Route
+            path="/appliances/aCs"
+            element={<HeatPumps items={appliances && appliances.filter((item) => item.type === 'aCs')} />}
+          />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contacts />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/add' element= {<Add Push={Push}/>} />
         </Routes>
+      </div>
+      <div className="footer">
+        <p>© 2023 - All rights reserved</p>
+        <p onClick={handleAdminClick}>Administration</p>
       </div>
     </div>
   );
