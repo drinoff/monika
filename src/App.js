@@ -37,22 +37,21 @@ function App() {
   const handleAdminClick = () => {
     navigate('/login');
   };
-  
+
   const logout = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
         localStorage.clear();
-        navigate('/')
+        navigate('/');
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
 
   return (
     <div className="App">
-      
       <Navigation logout={logout} />
       <div className="mainContent">
         <Routes>
@@ -68,13 +67,15 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contacts />} />
           <Route path="/login" element={<Login />} />
-          <Route path='/add' element= {<Add Push={Push}/>} />
+          <Route path="/add" element={JSON.parse(localStorage.getItem('user')) ? <Add Push={Push} /> : <Login />} />
         </Routes>
       </div>
-      <div className="footer">
-        <p>© 2023 - All rights reserved</p>
-        <p onClick={handleAdminClick}>Administration</p>
-      </div>
+      {!navigator.userAgentData.mobile && (
+        <div className="footer">
+          <p>© 2023 - All rights reserved</p>
+          <p onClick={handleAdminClick}>Administration</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { TextField } from '@mui/material';
+
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -26,16 +29,13 @@ const Login = () => {
   };
 
   return (
-    <Box>
-      <form action="">
-        <label htmlFor="email">Email</label>
-        <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} />
-        <label htmlFor="password">Password</label>
-        <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} />
-        <button type="button" onClick={signIn}>
-          Login
-        </button>
-      </form>
+    <Box sx={{ marginTop: '200px', display: 'flex', flexDirection: 'column', gap: '30px' }}>
+      <TextField value={email} label={'Email'} onChange={(e) => setEmail(e.target.value)} />
+
+      <TextField value={password} label={'Password'} type="password" onChange={(e) => setPassword(e.target.value)} />
+      <button className="loginButton" onClick={signIn}>
+        Login
+      </button>
     </Box>
   );
 };
