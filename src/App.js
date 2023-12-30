@@ -26,11 +26,15 @@ function App() {
     });
   }, []);
 
-  const Push = () => {
-    appliances.push({ username: 'o22', email: 'o22@gmail.com', age: '22' });
+  const Push = (data) => {
+    appliances.push(data);
 
     set(ref(db, 'appliances'), {
       ...appliances,
+    }).then(() => {
+      navigate('/');
+    }).catch((error) => {
+      console.log(error);
     });
   };
 
