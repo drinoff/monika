@@ -31,11 +31,13 @@ function App() {
 
     set(ref(db, 'appliances'), {
       ...appliances,
-    }).then(() => {
-      navigate('/');
-    }).catch((error) => {
-      console.log(error);
-    });
+    })
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleAdminClick = () => {
@@ -74,12 +76,12 @@ function App() {
           <Route path="/add" element={JSON.parse(localStorage.getItem('user')) ? <Add Push={Push} /> : <Login />} />
         </Routes>
       </div>
-      {!navigator.userAgentData.mobile ? (
+      {window.screen.width > 800 && (
         <div className="footer">
           <p>© 2023 - All rights reserved</p>
           <p onClick={handleAdminClick}>Administration</p>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }
