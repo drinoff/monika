@@ -38,9 +38,9 @@ function App() {
     });
   };
 
-  const handleAdminClick = () => {
-    navigate('/login');
-  };
+  // const handleAdminClick = () => {
+  //   navigate('/login');
+  // };
 
   const logout = () => {
     const auth = getAuth();
@@ -74,12 +74,12 @@ function App() {
           <Route path="/add" element={JSON.parse(localStorage.getItem('user')) ? <Add Push={Push} /> : <Login />} />
         </Routes>
       </div>
-      {!navigator.userAgentData.mobile && (
+      {/* {!navigator.userAgentData.mobile && (
         <div className="footer">
           <p>© 2023 - All rights reserved</p>
           <p onClick={handleAdminClick}>Administration</p>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
