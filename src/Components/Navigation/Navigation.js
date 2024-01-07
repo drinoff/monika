@@ -197,12 +197,12 @@ function ResponsiveAppBar({ logout }) {
                   )}
                 </Button>
               ))}
-              {JSON.parse(localStorage.getItem('user')) && (
+              {/* {JSON.parse(localStorage.getItem('user')) && (
                 <>
                   <button className="addButton" onClick={handleOnClick}>Добави</button> 
                   <button className="logoutButton" onClick={logout}>Изход</button>
                 </>
-              )}
+              )} */}
             </div>
           </Box>
         </Toolbar>
