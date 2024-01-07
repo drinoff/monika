@@ -73,10 +73,10 @@ function ResponsiveAppBar({ logout }) {
     }
   };
 
-  // const handleOnClick = () => {
-  //   navigate('/add');
-  //   setCurrentPage(null);
-  // };
+  const handleOnClick = () => {
+    navigate('/add');
+    setCurrentPage(null);
+  };
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#FCFCFC' }}>
@@ -197,12 +197,12 @@ function ResponsiveAppBar({ logout }) {
                   )}
                 </Button>
               ))}
-              {/* {JSON.parse(localStorage.getItem('user')) && (
+              {JSON.parse(localStorage.getItem('user')) && (
                 <>
                   <button className="addButton" onClick={handleOnClick}>Добави</button> 
                   <button className="logoutButton" onClick={logout}>Изход</button>
                 </>
-              )} */}
+              )}
             </div>
           </Box>
         </Toolbar>
