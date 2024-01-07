@@ -73,10 +73,10 @@ function ResponsiveAppBar({ logout }) {
     }
   };
 
-  const handleOnClick = () => {
-    navigate('/add');
-    setCurrentPage(null);
-  };
+  // const handleOnClick = () => {
+  //   navigate('/add');
+  //   setCurrentPage(null);
+  // };
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#FCFCFC' }}>
